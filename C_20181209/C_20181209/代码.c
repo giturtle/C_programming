@@ -11,6 +11,7 @@ unsigned int reserve_bit(unsigned int value) {
 
 
 
+
 //不使用（a+b）/2这种方式，求两个数的平均值
 // ① :二者作差分一半加给减数
 //优点:可以计算浮点数,负数等
