@@ -4,6 +4,75 @@
 #include <math.h>
 
 
+//通过键盘输入字符,判断其为控制/数字/大写字母/小写字母/其他字母哪一类
+int main() {
+	char ch;
+	printf("请输入字符:\n");
+	scanf("%c", &ch);
+	if (ch < 32)	//^z
+		printf("\n字符为: 控制字符\n");
+	else if ((ch >= 'A') && (ch <= 'Z')) {
+		printf("\n字符为: 大写字母\n");
+	}
+	else if ((ch >= 'a') && (ch <= 'z')) {
+		printf("\n字符为: 小写字母\n");
+	}
+	else if ((ch >= '0') && (ch <= '9')) {
+		printf("\n字符为: 数字\n");
+	}
+	else
+		printf("\n字符为: 其他字符\n");
+	system("pause");
+	return 0;
+}
+
+
+
+//编写简单计算器程序
+//根据用户输入的两个操作数和运算符,显示算计结果
+//该运算符包括( +,-,*,/ )
+int main() {
+	int a, b;
+	char ysf;
+	printf("请输入两个操作数和操作符:\n");
+	scanf("%d %d %c", &a, &b, &ysf);
+	switch (ysf) {
+	case '+':printf("\n%d + %d = %d\n", a, b, a + b); break;
+	case '-':printf("\n%d - %d = %d\n", a, b, a - b); break;
+	case '*':printf("\n%d * %d = %d\n", a, b, a * b); break;
+	case '/':printf("\n%d / %d = %d\n", a, b, a / b); break;
+	}
+	system("pause");
+	return 0;
+}
+
+
+
+//编制菜单程序,在屏幕上显示时间表,根据用户的选择,显示不同的问候信息.
+int main() {
+	int ch;
+	printf("*******时间表*******\n");
+	printf("\t1.morning\n");
+	printf("\t2.afternoon\n");
+	printf("\t3.night\n\n");
+	printf("你的选择是:\n");
+	scanf("%d", &ch);
+	switch (ch) {
+	case 1:
+		printf("Good morning!\n");
+		break;
+	case 2:
+		printf("Good afternoon!\n");
+		break;
+	case 3:
+		printf("Good night!\n");
+		break;
+	}
+	system("pause");
+	return 0;
+}
+
+
 //输入年份和月份,求该月有多少天.
 int main() {
 	int year, month, day;
