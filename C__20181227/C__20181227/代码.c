@@ -1,6 +1,121 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+//找出一句话中最长的单词
+
+//--------方法一----------
+#define M 100
+#define N 50
+void longword(char s[], char t[]) {
+	int i, j, k, n = strlen(s), m = 0, word = 0;
+	char p[20];
+	for (i = 0, j = 0, k = 0; i <= n; i++) {
+		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')) {
+			word = 1;//标记
+			p[j++] = s[i];//传向数组p
+		}
+		else if (word == 1) {
+			if (j > k) {
+				//长字母替换短字母
+				for(m = 0; m < j; m++) {
+					t[m] = p[m];
+				}
+				t[m] = '\0';//此时m = m+1,结尾加上 \0
+				k = j;//长度更迭
+			}
+			word = 0;
+			j = 0;
+		}
+	}printf("\n最长单词长度为:%d",k);
+}
+int main() {
+	char arr[M], lg[N];
+	printf("输入一段英文:\n");
+	gets(arr);
+	longword(arr, lg);
+	printf("\n最长单词为:");
+	puts(lg);
+	system("pause");
+	return 0;
+}
+
+//-------方法2-------
+void long_word(char s[]);
+int main() {
+	char str[50];
+	printf("输入字符:\n");
+	gets(str);
+	long_word(str);
+	system("pause");
+	return 0;
+}
+void long_word(char s[]) {
+	int max = 0; int len = 0;
+	char m[20], ma[20];
+	int n = strlen(s);
+	for (int i = 0, j = 0; i <= n; i++) {
+		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')) {
+			m[len++] = s[i];
+		}
+		else {
+			m[len] = '\0';
+			if (len > max) { 
+				max = len;
+				strcpy(ma, m);
+				len = 0;
+			}
+			else
+				len = 0;
+		}
+	}
+	printf("%s", ma);
+}
+
+
+
+void print(char* p) {
+	int start = 0, count = 0, num = 1, number = 1;
+	int arr[M];
+	while (1) {
+		//计算单词长度,到空格
+		while (1) {
+			if (((*p >= 'a')
+				&& (*p <= 'z')
+				|| (*p >= 'A')
+				&& (*p <= 'Z')) && *p != '\0')
+				count++;
+			else {
+				break;
+			}
+			p++;
+		}
+		//将空格指针挪到下一单词首
+		do {
+			p++;
+		} while (*p == ' ');
+		//将第一个单词长度给start
+		while (num) {
+			arr[0] = count;
+			num = 0;
+			break;
+		}
+		//判断是否最长单词
+		if (start < count) {
+			arr[number++] = count;
+			start = count;
+			for (int* i = p - count;i <= p; i++) {
+				printf("%c", *p);
+			}
+			break;
+		}
+		count = 0;
+	}
+}
+
+
+
 
 int d = 1;
 fun(int p) {
@@ -273,7 +388,7 @@ int main() {
 
 main() {
 	int t = 1;
-	fun(fun(t));		//为什么第二次调用参数是 3 ????
+	fun(fun(t));		
 	system("pause");
 	return 0;
 }
@@ -287,5 +402,5 @@ fun(int h){
 		printf("%d,", a[k]);
 	}
 	printf("\n");
-	return(a[h]);
+	return (a[h]);
 }
