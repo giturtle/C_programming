@@ -3,6 +3,53 @@
 #include <stdlib.h>
 
 
+//编程将字符串s中所有的空格字符删去
+
+//①下面这个函数实现了“字符间一个空格”的删去，不太完美
+void delete_string1(char arr[]) {
+	char str[50];
+	int i = 0;
+	while (*arr != '\0') {
+		if (*arr != ' ') {
+			str[i++] = *arr;
+		}
+		else {
+			str[i++] = *(arr + 1);
+		}
+		arr++;
+	}
+	str[i] = '\0';
+	printf("%s\n", str);
+}
+
+//②改进版，可以处理多个空格
+void delete_string(char arr[]) {
+	char str[50];
+	int i = 0;
+	while (*arr != '\0') {
+		if (*arr == ' ') {
+			arr++;
+			continue;
+		}
+		str[i++] = *arr;
+		arr++;
+	}
+	str[i] = '\0';
+	printf("%s\n", str);
+}
+
+int main() {
+	char *s = "Our   story  begins   ~";
+	printf("删除之前的字符串为：%s\n\n", s);
+	printf("删除之后的字符串为：\n");
+	delete_string(s);
+	delete_string1(s);
+	system("pause");
+	return 0;
+}
+
+
+
 //编写函数，转置一个3 × 3矩阵
 void reverse(int arr[3][3]) {
 	int t;
@@ -135,25 +182,4 @@ int main() {
 }
 
 
-
-//编程将字符串s中所有的空格字符删去
-void delete_string(char arr[]) {
-	char str[50];
-	int i = 0;
-	while (*arr != ' ' && *arr != '\0') {
-		str[i++] = arr++;
-		if (*arr == ' ') {
-			arr++;
-		}
-	}
-	str[arr] = '\0';//？
-	printf("%s", str);
-}
-int main() {
-	char *s = "Our story begins~";
-	printf("删除之前的字符串为：%s\n", s);
-	delete_string(s);
-	system("pause");
-	return 0;
-}
 
