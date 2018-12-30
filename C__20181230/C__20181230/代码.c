@@ -3,6 +3,39 @@
 #include <stdlib.h>
 
 
+//编写函数，转置一个3 × 3矩阵
+void reverse(int arr[3][3]) {
+	int t;
+	for (int i = 0; i < 3; i++) {
+		for (int j = i; j < 3; j++) {
+			//j = i很关键！！！1
+			//如果按常理j = 0，就换转置两次，变回了原来的数组
+			//j = i；这样的话就保证从对角线一侧下手，不会变换两次
+			t = arr[i][j];
+			arr[i][j] = arr[j][i];
+			arr[j][i] = t;
+		}
+	}
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			printf("%5d", arr[i][j]);
+		}
+		printf("\n");
+	}
+}
+int main() {
+	int a[3][3];
+	printf("输入一个三行三列矩阵：\n");
+	for (int i = 0; i < 3; i++) {
+		scanf("%d %d %d", &a[i][0], &a[i][1], &a[i][2]);
+	}
+	printf("\n变换后的数组为：\n");
+	reverse(a);
+	system("pause");
+	return 0;
+}
+
+
 
 
 //输入一行字符，找出其中大写字母，小写字母，空格，数字以及其他字符数目
@@ -100,3 +133,27 @@ int main() {
 	system("pause");
 	return 0;
 }
+
+
+
+//编程将字符串s中所有的空格字符删去
+void delete_string(char arr[]) {
+	char str[50];
+	int i = 0;
+	while (*arr != ' ' && *arr != '\0') {
+		str[i++] = arr++;
+		if (*arr == ' ') {
+			arr++;
+		}
+	}
+	str[arr] = '\0';//？
+	printf("%s", str);
+}
+int main() {
+	char *s = "Our story begins~";
+	printf("删除之前的字符串为：%s\n", s);
+	delete_string(s);
+	system("pause");
+	return 0;
+}
+
