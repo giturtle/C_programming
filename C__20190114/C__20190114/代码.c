@@ -3,7 +3,70 @@
 #include <stdlib.h>
 #include <assert.h>
 
-////找出一个二维数组中的鞍点，该位置的元素在该行最大，在该列最小，也可能没有鞍点
+
+
+//有一行电文，已按下面规律译成密码
+//A → Z ，B → Y， C → X
+//a → z ，b → y， c → x
+//即第一个字母变成了第26个字母，第i个字母变成了第（26-i+1）个字母，非字母字符不变，要求编程将密码译回原文，并输出密码和原文
+int main() {
+	char arr[20];
+	int i = 0;
+	printf("请输入密码:\n");
+	gets(arr);
+	printf("\n\n============\n");
+	printf("密文为:\n");
+	puts(arr);
+	for (; i < sizeof(arr) / sizeof(arr[0]) - 1; i++) {
+		if (arr[i] >= 'a' && arr[i] <= 'z')
+			arr[i] = 27 - (arr[i] - 96) + 96;
+		if (arr[i] >= 'A' && arr[i] <= 'Z')
+			arr[i] = 27 - (arr[i] - 64) + 64;
+	}
+	printf("\n密码原文为：\n");
+	puts(arr);
+	printf("============\n\n");
+	system("pause");
+	return 0;
+}
+
+
+//有15个数按由小到大顺序存放在一个数组中，输入一个数
+//要求用折半查找法找出该数是数组中第几个元素的值，如果不在数组中输出“无此数”
+int main() {
+	int arr[15] = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 };
+	int to_found, mid;
+	printf("请输入要查找的值:\n");
+	scanf("%d", &to_found);
+	int left = 0;
+	int right = (sizeof(arr) / sizeof(arr[0])) - 1;
+	//while(left < right){
+	//不可以使用这个while语句
+	for(int i = 0; i < sizeof(arr) / sizeof(arr[0]);i++){
+		//这里判定条件不可以写 < right，因为right值在变化
+		mid = (left + right) / 2;
+		if (to_found < arr[mid]) {
+			right = mid - 1;
+		}
+		else if (to_found > arr[mid]) {
+			left = mid + 1;
+		}
+		else {
+			break;
+		}
+	}
+	if (left <= right) {
+		printf("找到了！下标为%d\n", mid);
+	}
+	else {
+		printf("无此数\n");
+	}
+	system("pause");
+	return 0;
+}
+
+
+//找出一个二维数组中的鞍点，该位置的元素在该行最大，在该列最小，也可能没有鞍点
 #define M 100
 #define N 100
 int main() {
