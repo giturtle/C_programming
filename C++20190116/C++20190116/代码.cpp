@@ -16,7 +16,7 @@ int main() {
 }
 
 
-两个运算符的表达式
+//两个运算符的表达式
 #include <iostream>
 using namespace std;
 int main() {
@@ -181,7 +181,7 @@ int main() {
 }
 
 
-简单的猜数字小游戏
+//简单的猜数字小游戏
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
