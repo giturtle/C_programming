@@ -1,6 +1,74 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+
+//判断一个字符串是否是另一个字符串翻转之后的字符串
+//s1 = AABCD , s2 = BCDAA 返回1
+//s1 = abcd ， s2 = ABCD 返回0
+int is_rotate(char* dest, char* src) {		//需要下题中的右旋函数
+	void right_rotate(char* str, int k);
+	if (strlen(dest) != strlen(src)) {
+		return 0;
+	}
+	int len = strlen(src);
+	while (len--) {
+		right_rotate(src, 1);
+		if (strcmp(dest, src) == 0) {
+			return 1;
+		}
+	}
+	return 0;
+}
+int main() {
+	char dest[100];
+	char src[100];
+	scanf("%s", dest);
+	scanf("%s", src);
+	printf("%d\n", is_rotate(dest, src));
+	system("pause");
+	return 0;
+}
+
+
+
+//ABCD --> 右旋1次 -->DABC 相当于 左旋3次
+//右旋K次 --> 左旋strlen(str) - k次
+void reverse(char* left, char* right) {
+	while (left < right) {
+		char tmp = *left;
+		*left = *right;
+		*right = tmp;
+		left++;
+		right--;
+	}
+}
+void left_rotate(char* str, int k) {
+	//三次逆转
+	//第一次翻转前k个字符
+	reverse(str, str + k - 1);
+	//第二次翻转剩下的字符
+	reverse(str + k, str + strlen(str) - 1);
+	//第三次整体翻转
+	reverse(str, str + strlen(str) - 1);
+}
+void right_rotate(char* str, int k) {
+	left_rotate(str, strlen(str) - k);
+}
+
+int main() {
+	char str[] = "ABCDEF";
+	int k;
+	scanf("%d", &k);
+	printf("%s\n", str);
+	left_rotate(str, k);
+	printf("%s\n", str);
+	right_rotate(str, k);
+	printf("%s\n", str);
+	system("pause");
+	return 0;
+}
 
 
 
