@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <string.h>
 
-//strlen
+//******************strlen******************
 
 size_t Strlen(const char *str) {
 	assert(str != NULL);
@@ -24,7 +24,7 @@ int main() {
 
 
 
-//strcpy
+//******************strcpy******************
 
 char* Strcpy(char *dest, const char *src) {
 	assert(dest != NULL);
@@ -51,6 +51,7 @@ int main() {
 }
 
 
+//******************strcmp******************
 
 int Strcmp(const char * str1, const char * str2) {
 	assert(str1 != NULL);
@@ -93,6 +94,9 @@ int main() {
 	system("pause");
 	return 0;
 }
+
+
+//******************strcat******************
 
 char *Strcat(char *dest, const char *src) {
 	assert(dest != NULL);
