@@ -7,7 +7,8 @@
 #include <stdint.h>
 
 
-//memcpy
+//******************memcpy******************
+
 void *Memcpy(void * dest, const void * src, size_t num) {
 	assert(dest != NULL);
 	assert(src != NULL);
@@ -17,6 +18,7 @@ void *Memcpy(void * dest, const void * src, size_t num) {
 		//这里不可以dest[i] = src[i];
 		//因为void*不可以解引用以及加上一个整数，上面这一句就是在进行两者。
 		pdest[i] = psrc[i];
+		//缓冲区重合问题
 	}
 	return dest;
 }
@@ -32,10 +34,11 @@ int main() {
 }
 
 
-
+//缓冲区重合问题发生原因：dest指针是否在src缓冲区之内
 //避免memcpy缓冲区重合问题：
-//发生原因：dest指针是否在src缓冲区之内
-//memmove
+
+//******************memmove******************
+
 void *Memmove(void * dest, const void * src, size_t num) {
 	assert(dest != NULL);
 	assert(src != NULL);
@@ -58,9 +61,16 @@ void *Memmove(void * dest, const void * src, size_t num) {
 
 
 
+//******************memcmp******************
+int Memcmp(const void * ptr1,
+	const void * ptr2,
+	size_t num);
+//和strncmp的使用非常相似。
 
 
-//strerror
+
+//******************strerror******************
+
 //默认情况下，errno值为 0 ，如果使用了某些库函数或者操作系统函数，这些函数在执行失败的时候就设置errno的值
 //根据返回的错误码，返回对应的错误信息
 int main() {
