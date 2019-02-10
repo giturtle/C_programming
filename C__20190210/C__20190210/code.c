@@ -5,28 +5,34 @@
 
 
 //有n个人围成一圈，顺序排号。从第一个人开始报数，1-3，凡是报到3的人推出圈子，问最后留下的是原来第几号的那位
-
-int main(){
-	int n, i, k, m, a[100];
-	int *p;
-	p = a;
-	printf("请输入人数：");
+int main{
+	int i, k, m, n, num[50], *p;
+	printf("input number of person: n=");
 	scanf("%d", &n);
+	p = num;
 	for (i = 0; i < n; i++)
-		a[i] = i + 1;
-	i = 0; k = 0; m = 0;
-	while (m < n - 1){
-		if (a[i] != 0) k++;
-		if (k == 3){
-			a[i] = 0;
-			k = 0;
-			m++;
+		*(p + i) = i + 1;
+	i = 0;
+	k = 0;
+	m = 0;
+	while (m < n - 1)//m是指出局的人数，因为有n个人，最后剩下一个人，所以最多出局（n-1）个人，构成循环
+	{
+		if (*(p + i) != 0)//判断这个号（原来的序号）是否出局
+			k++;//这个号没有出局，就报数，计数器加1
+		if (k == 3)//报3的出局
+		{
+			*(p + i) = 0;//将出局的这个人标记
+			k = 0;//使计数器置零，以便后面的人报数
+			m++;//出局人数计数器加1
 		}
-		i++;
-		if (i == n) i = 0;
+		i++;//将指针后移，虽然i不是指针，但p+i就是指针了，所以i就是为指针服务的
+		if (i == n)//如果指针移到了尾部，则返回到头部
+			i = 0;
 	}
-	while (!(*p)) p++;
-	printf("最后留下的是原来第%d号的那位\n", *p);
+	//以上的循环是主要焦点，后面的就是找出最后那个人，这个好理解
+	while (*p == 0)//用这个可以只判断所找号的前面的号（包括所找号），不用判断后面的。
+	p++;
+	printf("The last one is N0.%d\n", *p);
 	system("pause");
 	return 0;
 }
@@ -104,29 +110,29 @@ int main() {
 	printf("请输入字符串3:\n");
 	gets(c);
 	printf("从小到大的字符串顺序：\n");
-	if (*a_ptr > *b_ptr){
-		if (*a_ptr > *c_ptr){
-			if (*b_ptr > *c_ptr){
+	if (*a_ptr > *b_ptr) {
+		if (*a_ptr > *c_ptr) {
+			if (*b_ptr > *c_ptr) {
 				puts(c); puts(b); puts(a);
 			}
-			else{
+			else {
 				puts(b); puts(c); puts(a);
 			}
 		}
-		else{
+		else {
 			puts(b); puts(a); puts(c);
 		}
 	}
-	else{
-		if (*b_ptr > *c_ptr){
-			if (*a_ptr > *c_ptr){
+	else {
+		if (*b_ptr > *c_ptr) {
+			if (*a_ptr > *c_ptr) {
 				puts(c); puts(a); puts(b);
 			}
-			else{
+			else {
 				puts(a); puts(c); puts(b);
 			}
 		}
-		else{
+		else {
 			puts(a); puts(b); puts(c);
 		}
 	}
