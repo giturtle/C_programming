@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 //汉诺塔问题
+
 int main() {
 	void hanoi(int n, char one, char two, char three);		//将n个盘子从one座借助two座移到three座
 	int m;
