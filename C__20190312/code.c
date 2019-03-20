@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-//int main(){
-//  int a[3][4] = {1,3,5,7,9,11,13,15,17,19,21,21};
-//  int (*p)[4],i,j;
-//  p = a;
-//  printf("please enter row and column:");
-//  scanf("%d %d",&i,&j);
-//  printf("a[%d,%d] = %d\n",i,j,p[i][j]);
-//  return 0;
-//}
+int main(){
+  int a[3][4] = {1,3,5,7,9,11,13,15,17,19,21,21};
+  int (*p)[4],i,j;
+  p = a;
+  printf("please enter row and column:");
+  scanf("%d %d",&i,&j);
+  printf("a[%d,%d] = %d\n",i,j,p[i][j]);
+  return 0;
+}
 
-//int main(){
-//  int a[4] = {1,3,5,7};
-//  int (*p)[4];
-//  p = &a;
-//  printf("%d\n",(*p)[3]);
-//  return 0;
-//}
+int main(){
+  int a[4] = {1,3,5,7};
+  int (*p)[4];
+  p = &a;
+  printf("%d\n",(*p)[3]);
+  return 0;
+}
 
 //有一个班，3个学生，各学4门课，计算总平均分以及第n个学生的成绩
 int main(){
