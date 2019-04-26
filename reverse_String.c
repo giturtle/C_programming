@@ -37,5 +37,52 @@ char* reverseWords(char* s) {
     }
     return s;
   
-   
+    
+      
+    /*解法二*/
+    /*
+    char[] str=s.toCharArray();
+        int start=0,i=0;
+        while(i<str.length)
+        {
+            while(i<str.length&&str[i]!=' ') //顺序不能颠倒
+            {
+                i++;
+            }
+            int end=i-1;  //此时i指向空格或者str.length
+            while(start<end)
+            {
+                char c=str[start];
+                str[start++]=str[end];
+                str[end--]=c;
+            }
+            start=++i;
+        }
+        return new String(str); 
+    
+    
+    */
+    
+    
+    
+    //超出时间限制
+    /*
+    char *str = s;
+    while(*str != '\0') {
+        char *start = str;
+        char *end = str;
+        while(*end != ' '){
+            end++;
+        }
+        while(start < (end - 1)){
+           char t = *start;
+            *start = *end;
+            *end = t;
+            start++;
+            end--;
+        }
+        str = end + 1;
+    }
+    return s;
+    */
 }
