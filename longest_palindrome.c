@@ -17,8 +17,8 @@
 
 //思路一
 int longestPalindrome(char * s){
-    int len = strlen(s);
-    int mark[128];
+    int len = strlen(s);   
+    int mark[128];      //128个ASCII码值，数组进行存储
     for(int i = 0;i < 128;++i){
         mark[i] = 0;
     }
@@ -31,7 +31,7 @@ int longestPalindrome(char * s){
             ans += mark[i];
         }
         else{
-            ans += mark[i] - 1;
+            ans += (mark[i] - 1);
         }
     }
     if(ans < len){
